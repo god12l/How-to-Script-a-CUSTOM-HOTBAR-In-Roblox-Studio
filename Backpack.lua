@@ -58,7 +58,14 @@ local function ValidTool(x)
     local ReservedCount = Hotbar:GetAttribute("ReservedCount")
   
     if not x:ISA("Tool") or (Slot and x == Slot.Tool) then return false end
-  
+  ﻿
+    if (Slot and x ~= Slot.Tool) or (not Slot and (not Reserved and ﻿NormalCount == MaxNormalSlots) or (Reserved and ReservedCount == MaxReservedSlots)) then 
+    ﻿   task.wait()
+        if x.Parent == Character and Equipped then 
+            x:Destroy()
+            Humanoid:EquipTool(Equipped.Tool)
+      end
+  end
 end
 
 
