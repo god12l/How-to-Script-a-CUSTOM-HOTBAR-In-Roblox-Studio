@@ -21,7 +21,7 @@ local GenerateIcons = true
 local MaxNormalSlots = 5
 local MaxReservedSlots = 3
 Hotbar:SetAttribute("NormalMax", MaxNormalSlots)
-Hotbar: SetAttribute("ReservedMax", MaxReservedSlots)
+Hotbar:SetAttribute("ReservedMax", MaxReservedSlots)
 
 
 local White = Color3.new(1, 1, 1) 
