@@ -107,6 +107,14 @@ Tools[x.Name] = Slot
 Slot.Frame = Default:Clone()
 Slot.Frame.Visible = true
 
+  ﻿
+    local ToolModel = PropAssets:FindFirstChild(x.Name) or FoodAssets:FindFirstChild(x.Name) or EquipmentAssets:FindFirstChild(x.Name) 
+        if GenerateIcons and ToolModel then
+        Slot.Frame.TextLabel: Destroy()
+        Slot.Frame.Icon: Destroy()
+    local Viewport = ViewportUtil
+
+    end
 end
 
 
