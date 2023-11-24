@@ -23,7 +23,6 @@ local MaxReservedSlots = 3
 Hotbar:SetAttribute("NormalMax", MaxNormalSlots)
 Hotbar:SetAttribute("ReservedMax", MaxReservedSlots)
 
-
 local White = Color3.new(1, 1, 1) 
 local Gold = Color3.new(1, 1, 0) 
 local Black = Color3.new(0,0,0)
@@ -72,7 +71,6 @@ local function ValidTool(x)
   return true 
 end
 
-﻿
 local function SortSlots()
     for i, v in pairs(Slots) do
         V.Index = v.Frame.LayoutOrder
@@ -92,6 +90,24 @@ end
         end
    end
 end 
+﻿
+local function CreateSlots(x)
+    if x:ISA("Humanoid") and x.Parent == Character then
+    Humanoid = x
+    return
+end
+  
+if not Valid Tool(x) then return end 
+local Slot = {}
+table.insert(Slots, Slot)
+  
+Slot.Index = #Slots
+Slot.Tool = X
+Tools[x.Name] = Slot
+Slot.Frame = Default:Clone()
+Slot.Frame.Visible = true
+
+end
 
 
 
