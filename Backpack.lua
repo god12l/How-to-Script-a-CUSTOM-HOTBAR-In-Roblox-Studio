@@ -84,11 +84,14 @@ local function SortSlots()
   end)
 end
 
-local function FinalizeLayout(Input)
-  if not Input or (Input and Input.UserInputType == Enum.UserInputType.MouseButton1)
-end
-
-
+   local function FinalizeLayout(Input)
+       if not Input or (Input and Input.UserInputType == Enum.UserInputType.MouseButton1) then 
+           ﻿if MouseListener and MouseListener.Connected then 
+                MouseListener:Disconnect()
+                SortSlots()
+        end
+   end
+end 
 
 
 
