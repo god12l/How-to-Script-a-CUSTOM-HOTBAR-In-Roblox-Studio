@@ -65,7 +65,27 @@ local function ValidTool(x)
             x:Destroy()
             Humanoid:EquipTool(Equipped.Tool)
       end
+
+     x:Destroy()
+    return false     
   end
+  return true 
+end
+
+﻿
+local function SortSlots()
+    for i, v in pairs(Slots) do
+        V.Index = v.Frame.LayoutOrder
+        v.Frame.Hotkey.TextLabel.Text = v.Index
+    end
+  
+  table.sort(Slots, function(a, b)
+      return a.Index < b.Index
+  end)
+end
+
+local function FinalizeLayout(Input)
+  if not Input or (Input and Input.UserInputType == Enum.UserInputType.MouseButton1)
 end
 
 
