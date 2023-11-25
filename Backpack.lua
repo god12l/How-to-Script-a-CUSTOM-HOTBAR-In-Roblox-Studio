@@ -112,8 +112,6 @@ Slot.Frame.Visible = true
         if GenerateIcons and ToolModel then
         Slot.Frame.TextLabel: Destroy()
         Slot.Frame.Icon: Destroy()
-    
-    
     ﻿
   local Viewport ViewportUtil.Create(ToolModel[x.Name], "Tool") 
     Viewport.AnchorPoint = Vector2.new(0.5, 0.5) 
@@ -140,8 +138,35 @@ if x:GetAttribute("Reserved") then
 else
     Hotbar: SetAttribute("NormalCount", Hotbar: GetAttribute("NormalCount") + 1)
 end
+﻿
+Slot.Frame.MouseButton1Click:Connect(function()
+    Slot:Toggle()
+end)
+
+  
+
+local function MouseMoved(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseMovement then
+      if Left and Input.Position.X < Left. Frame.AbsolutePosition.X+ Left. Frame.AbsoluteSize.X then
+         Slot:Shift(Left)
+        
+         Left = Right ~= Slot and Right or Slots[Slot.Index - 1]
+       Right = Slots[Left.Index (Left.Index + 1 ~= Slot.Index and 1 or 2)]
+          end
+      end
+  end
 
 end
+
+  Slot.Frame.MouseButton1Down:Connect(function()
+  if #Slots <= 1 then return end -- It takes two to tango
+    
+  FinalizeLayout()
+  Left = Slots[Slot.Index - 1] 
+  Right = Slots [Slot.Index + 1]
+    
+  MouseListener = UserInputService.InputChanged:Connect(MouseMoved)
+  end)
 
 
 
