@@ -229,6 +229,44 @@ else
   Hotbar:SetAttribute("NormalCount", Hotbar:GetAttribute("NormalCount")
   end
 end
+﻿
+end
+
+--NEW ITEM EQUIPPED--
+if x.Parent == Character then
+Slot:Toggle()
+end
+
+  return Slot
+end
+
+
+--KEYBOARD INPUT--
+local function Select(Input, Event)
+if Event then return end
+local Slot = Slots[Input.KeyCode.Value - 48]
+
+if Slot then
+Slot: Toggle()
+    end
+end
+
+
+--REMOVE SLOT-- 
+        local function RemoveSlot(x)
+            if not x:ISA("Tool") then return end
+              local Slot Tools[x.Name]
+
+              if Slot and x == Slot.Tool then
+              Mouse.Icon = ""
+              if Slot == Equipped and x.Parent == Backpack then --Implicitly unequipped--
+              Slot:Toggle()
+              elseif x.Parent ~= Backpack and x.Parent = Character then --Tool no longer exists--
+              Slot:Delete()
+            end
+      end
+end
+
 
 
   
