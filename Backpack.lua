@@ -91,7 +91,7 @@ end
    end
 end 
 ﻿
-local function CreateSlots(x)
+local function CreateSlot(x)
     if x:ISA("Humanoid") and x.Parent == Character then
     Humanoid = x
     return
@@ -333,6 +333,41 @@ SetHotbarTransparency(0, false)
   end
 end
 script.SetState.Event:Connect(LockHotbar)
+
+﻿
+--CHARACTER ADDED--
+local function CharacterAdded(x)
+FinalizeLayout() ·-- InputChanged persists after death
+
+for i = #Slots, 1, -1 do -- Slots have to be explicitly deleted, whereas frames and tool 
+  Local Slot = Slots[i]
+if Slot then
+  Slot:Delete()
+    end
+end 
+-------------------------    ---------------------------------    ------------------------------------
+Mouse.Icon = ""
+Character = X
+LastTool = nil
+x.ChildAdded:Connect(CreateSlot) 
+x.ChildRemoved:Connect(RemoveSlot)
+
+for i, v in ipairs(x:GetChildren()) do 
+  CreateSlot(v)
+end
+-------------------------    ---------------------------------    ------------------------------------
+Backpack Player:WaitForChild("Backpack") 
+Backpack.ChildAdded:Connect(CreateSlot) 
+Backpack.ChildRemoved:Connect(RemoveSlot)
+
+  for i, v in ipairs(Backpack:GetChildren()) do 
+    CreateSlot(v)
+    end
+end
+
+UserInputService.InputBegan:Connect(Select)
+UserInputService.InputEnded:Connect(FinalizeLayout)  
+Player.CharacterAdded:Connect(CharacterAdded)
   
 
 
