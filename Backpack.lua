@@ -267,7 +267,48 @@ end
       end
 end
 
+﻿
+--LOCK BACKPACK--
+local function SetTransparency(Object, Alpha, IgnoreList, TweenData) 
+local Properties = {
+["Frame"] = "BackgroundTransparency",
+["ViewportFrame"] = "ImageTransparency",
+["Scrolling Frame"] = "ScrollBarImageTransparency", 
+["ImageButton"] = "ImageTransparency",
+["ImageLabel"] = "ImageTransparency" 
+["TextButton"] = "TextTransparency",
+["TextLabel"] = "TextTransparency", 
+["TextBox"] = "TextTransparency"
+}
 
+for i, v in ipairs (Object:GetDescendants()) do
+  if not v:ISA("Guiobject") or (Ignorelist and table.find(IgnoreList, v)) then continue end
+
+  if TweenData then
+  TweenService:Create(v, TweenData, {[Properties[v.ClassName]] = Alpha}):Play()
+  if v:ISA("Scrolling Frame") or v:ISA("TextButton") then
+
+else
+TweenService:Create(v, TweenData, {[Properties[v.ClassName]] = Alpha}): Play()
+if v:ISA("Scrolling Frame") or v:ISA("TextButton") then
+    TweenService:Create(v, TweenData, {BackgroundTransparency =  Alpha}): Play()
+end
+    else
+          v[Properties[v.ClassName]] = Alpha
+            if v:ISA("Scrolling Frame") or v:ISA("TextButton") then
+            v.BackgroundTransparency = Alpha
+        end
+    end
+  end
+end
+  
+local function SetHotbarTransparency (Alpha, KeepEquipped)
+for _, Frame in ipairs(Hotbar:GetChildren()) do --New frames will inherit these changes--
+if not Frame:ISA("GuiObject") or (KeepEquipped and Equipped and Frame == Equipped. Frame) then continue end 
+  TweenService: Create (Frame, TweenData.Long, {ImageTransparency (0.5 Alpha) + 0.5}):Play() 
+  SetTransparency (Frame, Alpha, nil, TweenData.Long)
+  end
+end
 
   
 
