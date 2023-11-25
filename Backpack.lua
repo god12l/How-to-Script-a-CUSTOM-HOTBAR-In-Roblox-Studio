@@ -112,9 +112,35 @@ Slot.Frame.Visible = true
         if GenerateIcons and ToolModel then
         Slot.Frame.TextLabel: Destroy()
         Slot.Frame.Icon: Destroy()
-    local Viewport = ViewportUtil
+    
+    
+    ﻿
+  local Viewport ViewportUtil.Create(ToolModel[x.Name], "Tool") 
+    Viewport.AnchorPoint = Vector2.new(0.5, 0.5) 
+    Viewport.Position = UDim2.fromScale(0.5, 0.5) 
+    Viewport.Size = UDim2.fromScale(1.5, 1.5)
+    Viewport.Parent = Slot.Frame
+elseif x.TextureId = "" then
+    Slot.Frame.TextLabel:Destroy() 
+    Slot.Frame.Icon.Image = x.TextureId
+else 
+    Slot.Frame.Icon:Destroy()
+    Slot.Frame.TextLabel.Text = string.sub(x.Name, 1, 2)
+end
 
-    end
+Slot.Frame.Name = x.Name
+Slot.Frame.Hotkey.TextLabel.Text = Slot.Index
+Slot.Frame.LayoutOrder = Slot.Index
+Slot.Frame.Parent = Hotbar
+TweenService:Create(Slot. Frame, TweenData.Pop, SlotCreated):Play()
+  
+if x:GetAttribute("Reserved") then
+    Hotbar:SetAttribute("ReservedCount", Hotbar: GetAttribute("ReservedCount") + 1)
+    Slot. Reserved = true
+else
+    Hotbar: SetAttribute("NormalCount", Hotbar: GetAttribute("NormalCount") + 1)
+end
+
 end
 
 
