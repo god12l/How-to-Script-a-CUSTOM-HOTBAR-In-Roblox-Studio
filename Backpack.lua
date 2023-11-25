@@ -187,7 +187,6 @@ if self == Equipped then
       end
 end
   
-
 if self.Tool.Parent == Backpack then
     Humanoid: EquipTool(self.Tool)
 end
@@ -202,6 +201,36 @@ if Target then --Swap LayoutOrders for hotbar organization--
     self.Frame.LayoutOrder, Target. Frame.LayoutOrder = Target. Frame.LayoutOrder, self.Frame.LayoutOrder
 end
 self.Frame.LayoutOrder, Target.Frame.LayoutOrder = Target.Frame.LayoutOrder, self.Frame.LayoutOrder
-return
+  return
+end
+﻿
+self.Index = -1
+self.Frame.Hotkey.TextLabel.Text = self.Index 
+elf.Frame.LayoutOrder = self.Index
+end
+
+function Slot:Delete()
+if not Player.Parent then return end
+table.remove(Slots, self.Index)
+Tools[self.Tool.Name] = nil 
+self.Frame:Destroy()
+if self == Equipped then
+  Equipped = nil
+end
+
+local Size = #Slots -- Keep table size constant while iterating for i = self. Index, Size do
+for i = self.Index, Size do
+  Slots[i]:Shift()
+end
+
+if self.Reserved then
+  Hotbar:SetAttribute("ReservedCount", Hotbar:GetAttribute("ReservedCount") - 1)
+else
+  Hotbar:SetAttribute("NormalCount", Hotbar:GetAttribute("NormalCount")
+  end
+end
+
+
+  
 
 
