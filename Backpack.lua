@@ -168,6 +168,40 @@ end
   MouseListener = UserInputService.InputChanged:Connect(MouseMoved)
   end)
 
+﻿-- SLOT METHODS --
+  function Slot:Toggle()
+if (Locked and self == Equipped) or Humanoid.Health <= 0 then return end
+  
+if Equipped then
+  TweenService:Create(Equipped.Frame, TweenData.Long, Translucent Black):Play()
+  TweenService:Create(Equipped.Frame.Hotkey, TweenData.Long, Opaque White Frame):Play()
+    
+if self == Equipped then 
+    Equipped nil
+      
+    if self.Tool.Parent == Character then   --Explicitly unequipped--
+        Humanoid:UnequipTools()
+  end
+      
+          return
+      end
+end
+  
 
+if self.Tool.Parent == Backpack then
+    Humanoid: EquipTool(self.Tool)
+end
+  
+TweenService:Create(self.Frame, TweenData.Long, OpaqueWhiteImage):Play() 
+  TweenService:Create(self.Frame.Hotkey, TweenData.Long, OpaqueGold):Play() 
+  Equipped = self
+end 
+  
+function Slot:Shift(Target)
+if Target then --Swap LayoutOrders for hotbar organization--
+    self.Frame.LayoutOrder, Target. Frame.LayoutOrder = Target. Frame.LayoutOrder, self.Frame.LayoutOrder
+end
+self.Frame.LayoutOrder, Target.Frame.LayoutOrder = Target.Frame.LayoutOrder, self.Frame.LayoutOrder
+return
 
 
