@@ -310,6 +310,29 @@ if not Frame:ISA("GuiObject") or (KeepEquipped and Equipped and Frame == Equippe
   end
 end
 
+﻿
+local function LockHotbar (State, KeepEquipped) 
+    if State then
+        if not KeepEquipped and Equipped then 
+    Humanoid:UnequipTools()
+  end 
+
+Locked = true
+SetHotbarTransparency (0.5, Keep Equipped)
+  else
+  Locked= false
+SetHotbarTransparency(0, false)
+
+  
+  if LastTool and not Equipped then -- Don't re-equip if holding another tool --
+        local Slot = Tools[LastTool]
+            if Slot then
+        Slot: Toggle()
+        end
+    end
+  end
+end
+script.SetState.Event:Connect(LockHotbar)
   
 
 
