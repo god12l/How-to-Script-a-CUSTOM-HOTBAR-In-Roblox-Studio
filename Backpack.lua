@@ -369,5 +369,8 @@ UserInputService.InputBegan:Connect(Select)
 UserInputService.InputEnded:Connect(FinalizeLayout)  
 Player.CharacterAdded:Connect(CharacterAdded)
   
-
+if Player.Character then
+CharacterAdded(Player.Character)
+end
+return true
 
