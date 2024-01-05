@@ -9,11 +9,11 @@ local PropAssets = ReplicatedStorage.Assets.Items.Prop
 local FoodAssets = ReplicatedStorage.Assets.Items.Food
 local EquipmentAssets = ReplicatedStorage.Assets.Items.Equipment
 
-Local Player = Players.LocalPlayer
+local Player = Players.LocalPlayer
 local PlayerGui = Player.PlayerGui
 local Mouse = Player:GetMouse()
 
-﻿Local BackpackGui = PlayerGui:WaitForChild("HUD") 
+﻿local BackpackGui = PlayerGui:WaitForChild("HUD") 
 local Hotbar = BackpackGui.Inventory 
 local Default = Hotbar.Default
 
